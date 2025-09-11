@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'cwps_all_pump_status_screens.dart';
+import 'cwps_level_status_screen.dart';
+import 'cwps_pressure_status_screen.dart';
+import 'cwps_flow_status_screen.dart';
+import 'cwps_analyzer_screen.dart';
 import 'cwps_details_screen.dart';
+import 'cwps_valve_status_screen.dart';
+import 'home_screen.dart';
 
 class CWPScreen extends StatelessWidget {
+    const CWPScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +23,7 @@ class CWPScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xFFB21212),
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 16,
@@ -48,9 +57,9 @@ class CWPScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 64),
+                    const SizedBox(height: 8),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 64),
                       child: Text(
                         'WMS-APP',
                         style: TextStyle(
@@ -61,10 +70,10 @@ class CWPScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'CWPS',
                           style: TextStyle(
                             color: Colors.white,
@@ -73,7 +82,7 @@ class CWPScreen extends StatelessWidget {
                             letterSpacing: 1.5,
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Container(
                           width: 40,
                           height: 40,
@@ -81,16 +90,98 @@ class CWPScreen extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          child: Icon(Icons.precision_manufacturing, color: Colors.black87, size: 28),
+                          child: const Icon(
+                            Icons.precision_manufacturing, 
+                            color: Colors.black87, 
+                            size: 28
+                            ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 32),
-                    _MenuItem(label: 'ALL PUMP STATUS'),
-                    _MenuItem(label: 'LEVEL'),
-                    _MenuItem(label: 'PRESSURE'),
-                    _MenuItem(label: 'FLOW'),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
+
+                    
+                    // Menu
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 32),
+                        _MenuItem(
+                          label: 'ALL PUMP STATUS',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const CwphAllPumpStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+
+                           _MenuItem(
+                          label: 'LEVEL',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const CwpsLevelStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+
+                            _MenuItem(
+                          label: 'PRESSURE',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const CwpsPressureStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+      
+         _MenuItem(
+                          label: 'FLOW',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const CwpsFlowStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+
+                           _MenuItem(
+                          label: 'ANALYZER',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const CwpsAnalyzerScreen(),
+                              ),
+                            );
+                          },
+                        ),
+
+                           _MenuItem(
+                          label: 'VALVE',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const CwpsValveStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+
+                      ],
+                    ),
+                    
+                    const SizedBox(height: 32),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: ElevatedButton(
@@ -104,13 +195,13 @@ class CWPScreen extends StatelessWidget {
                           elevation: 0,
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => CWPSDetailsScreen()),
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (_) => HomeScreen()),
+                            (route) => false,
                           );
                         },
                         child: Text(
-                          'NEXT',
+                          'HOME',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -132,19 +223,24 @@ class CWPScreen extends StatelessWidget {
 
 class _MenuItem extends StatelessWidget {
   final String label;
-  const _MenuItem({required this.label});
+  final VoidCallback? onTap;
+  const _MenuItem({required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22,
-          fontWeight: FontWeight.w300,
-          letterSpacing: 1.1,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(6),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w300,
+            letterSpacing: 1.1,
+          ),
         ),
       ),
     );

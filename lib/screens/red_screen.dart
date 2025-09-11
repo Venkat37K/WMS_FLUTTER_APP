@@ -86,8 +86,8 @@ class RWPSDetailsScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 32),
-                    _MenuItem(label: 'VIBRATION'),
-                    _MenuItem(label: 'TEMPERATURE'),
+                    _MenuItem(label: 'Valve'),
+                    _MenuItem(label: 'Analyzer'),
                     SizedBox(height: 32),
                     Align(
                       alignment: Alignment.bottomRight,

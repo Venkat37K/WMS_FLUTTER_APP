@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'rwtl_tl_screen_status.dart';
+import 'cwtl_tl_screen_status.dart';
+import 'feeder_main1_tl_screen_status.dart';
+import 'feeder_main2_tl_screen_status.dart';
 import 'home_screen.dart';
+
 
 class TLScreen extends StatelessWidget {
   @override
@@ -12,9 +17,9 @@ class TLScreen extends StatelessWidget {
             width: 340,
             padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
             decoration: BoxDecoration(
-              color: Color(0xFFB21212),
+              color: const Color(0xFFB21212),
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 16,
@@ -48,8 +53,8 @@ class TLScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
-                    Padding(
+                    const SizedBox(height: 8),
+                    const Padding(
                       padding: const EdgeInsets.only(right: 64),
                       child: Text(
                         'WMS-APP',
@@ -61,10 +66,10 @@ class TLScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'TL',
                           style: TextStyle(
                             color: Colors.white,
@@ -73,7 +78,7 @@ class TLScreen extends StatelessWidget {
                             letterSpacing: 1.5,
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Container(
                           width: 40,
                           height: 40,
@@ -81,21 +86,68 @@ class TLScreen extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          child: Icon(Icons.bolt, color: Colors.black87, size: 28),
+                          child: const Icon(Icons.bolt, color: Colors.black87, size: 28),
                         ),
                       ],
                     ),
-                    SizedBox(height: 32),
-                    _MenuItem(label: 'PUMP STATUS'),
-                    _MenuItem(label: 'ANALOG PARAMETER DATA'),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
+
+                      Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 32),
+
+                        _MenuItem(
+                      label: 'RWTL',
+                      onTap: () {
+Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const RwtlTlStatusScreen()),
+                      );
+                      },
+                    ),
+
+                      _MenuItem(
+                      label: 'CWTL',
+                      onTap: () {
+Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const CwtlTlStatusScreen()),
+                      );
+                      },
+                    ),
+
+                      _MenuItem(
+                      label: 'FEEDER MAIN 1',
+                      onTap: () {
+Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const FeederMain1TlStatusScreen()),
+                      );
+                      },
+                    ),
+
+                      _MenuItem(
+                      label: 'FEEDER MAIN 2',
+                      onTap: () {
+Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const FeederMain2TlStatusScreen()),
+                      );
+                      },
+                    ),
+
+                      ],
+                      ),
+
+                    const SizedBox(height: 32),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          foregroundColor: Color(0xFFB21212),
-                          padding: EdgeInsets.symmetric(horizontal: 28, vertical: 12),
+                          foregroundColor: const Color(0xFFB21212),
+                          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                           ),
@@ -107,7 +159,7 @@ class TLScreen extends StatelessWidget {
                             (route) => false,
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           'HOME',
                           style: TextStyle(
                             fontSize: 18,
@@ -130,20 +182,25 @@ class TLScreen extends StatelessWidget {
 
 class _MenuItem extends StatelessWidget {
   final String label;
-  const _MenuItem({required this.label});
+  final VoidCallback? onTap;
+  const _MenuItem({required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+     return InkWell(
+      borderRadius: BorderRadius.circular(6),
+      onTap: onTap,
+      child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Text(
         label,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
-          fontSize: 22,
+          fontSize: 20,
           fontWeight: FontWeight.w300,
           letterSpacing: 1.1,
         ),
+      ),
       ),
     );
   }

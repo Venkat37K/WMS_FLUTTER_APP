@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'mbr1_screen_status.dart';
+import 'mbr2_screen_status.dart';
+import 'mbr3_screen_status.dart';
+import 'mbr4_screen_status.dart';
 import 'home_screen.dart';
 
 class MBRScreen extends StatelessWidget {
+  const MBRScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,14 +18,10 @@ class MBRScreen extends StatelessWidget {
             width: 340,
             padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
             decoration: BoxDecoration(
-              color: Color(0xFFB21212),
+              color: const Color(0xFFB21212),
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 16,
-                  offset: Offset(0, 8),
-                ),
+              boxShadow: const [
+                BoxShadow(color: Colors.black26, blurRadius: 16, offset: Offset(0, 8)),
               ],
             ),
             child: Stack(
@@ -37,20 +39,18 @@ class MBRScreen extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(6.0),
-                      child: Image.asset(
-                        'assets/Mstlogo.png',
-                        fit: BoxFit.contain,
-                      ),
+                      child: Image.asset('assets/Mstlogo.png', fit: BoxFit.contain),
                     ),
                   ),
                 ),
+
                 // Main content
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 64),
+                    const SizedBox(height: 8),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 64),
                       child: Text(
                         'WMS-APP',
                         style: TextStyle(
@@ -61,10 +61,10 @@ class MBRScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'MBR',
                           style: TextStyle(
                             color: Colors.white,
@@ -73,7 +73,7 @@ class MBRScreen extends StatelessWidget {
                             letterSpacing: 1.5,
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Container(
                           width: 40,
                           height: 40,
@@ -81,24 +81,58 @@ class MBRScreen extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          child: Icon(Icons.precision_manufacturing, color: Colors.black87, size: 28),
+                          child: const Icon(Icons.precision_manufacturing, color: Colors.black87, size: 28),
                         ),
                       ],
                     ),
-                    SizedBox(height: 32),
-                    _MenuItem(label: 'LEVEL'),
-                    _MenuItem(label: 'FLOW'),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
+
+                     // Menu
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 32),
+
+                    _MenuItem(
+                      label: 'MBR 1 - Valarmathi Nagar',
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const Mbr1StatusScreen()));
+                      },
+                    ),
+
+                    _MenuItem(
+                      label: 'MBR 2 - Bharathi Park',
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const Mbr2StatusScreen()));
+                      },
+                    ),
+
+                    _MenuItem(
+                      label: 'MBR 3 - Press Enclave',
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const Mbr3StatusScreen()));
+                      },
+                    ),
+
+                    _MenuItem(
+                      label: 'MBR 4 - Pillaiyarpuram',
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const Mbr4StatusScreen()));
+                      },
+                    ),
+
+                      ],
+                    ),
+
+                    const SizedBox(height: 32),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          foregroundColor: Color(0xFFB21212),
-                          padding: EdgeInsets.symmetric(horizontal: 28, vertical: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
+                          foregroundColor: const Color(0xFFB21212),
+                          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
                           elevation: 0,
                         ),
                         onPressed: () {
@@ -107,13 +141,9 @@ class MBRScreen extends StatelessWidget {
                             (route) => false,
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           'HOME',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 1.2,
-                          ),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 1.2),
                         ),
                       ),
                     ),
@@ -130,21 +160,28 @@ class MBRScreen extends StatelessWidget {
 
 class _MenuItem extends StatelessWidget {
   final String label;
-  const _MenuItem({required this.label});
+  final VoidCallback? onTap;
+  const _MenuItem({required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22,
-          fontWeight: FontWeight.w300,
-          letterSpacing: 1.1,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(6),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w300,
+            letterSpacing: 1.1,
+          ),
         ),
       ),
     );
   }
 }
+
+

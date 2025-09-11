@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'red_screen.dart';
+import 'all_pump_status_screens.dart';
+import 'level_status_screen.dart';
+import 'pressure_status_screen.dart';
+import 'flow_status_screen.dart';
+import 'analyzer_screen.dart';
+import 'valve_status_screen.dart';
+import 'home_screen.dart';
 
 class RWPScreen extends StatelessWidget {
+  const RWPScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,9 +20,9 @@ class RWPScreen extends StatelessWidget {
             width: 340,
             padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
             decoration: BoxDecoration(
-              color: Color(0xFFB21212),
+              color: const Color(0xFFB21212),
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 16,
@@ -44,13 +52,14 @@ class RWPScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 // Main content
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 64),
+                    const SizedBox(height: 8),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 64),
                       child: Text(
                         'WMS-APP',
                         style: TextStyle(
@@ -61,10 +70,10 @@ class RWPScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'RWPS',
                           style: TextStyle(
                             color: Colors.white,
@@ -73,7 +82,7 @@ class RWPScreen extends StatelessWidget {
                             letterSpacing: 1.5,
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Container(
                           width: 40,
                           height: 40,
@@ -81,16 +90,92 @@ class RWPScreen extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          child: Icon(Icons.precision_manufacturing, color: Colors.black87, size: 28),
+                          child: const Icon(
+                            Icons.precision_manufacturing,
+                            color: Colors.black87,
+                            size: 28,
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 32),
-                    _MenuItem(label: 'ALL PUMP STATUS'),
-                    _MenuItem(label: 'LEVEL'),
-                    _MenuItem(label: 'PRESSURE'),
-                    _MenuItem(label: 'FLOW'),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
+
+                    // Menu
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 32),
+                        _MenuItem(
+                          label: 'ALL PUMP STATUS',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AllPumpStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        _MenuItem(
+                          label: 'LEVEL',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const LevelStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        _MenuItem(
+                          label: 'PRESSURE',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const PressureStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        _MenuItem(
+                          label: 'FLOW',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const FlowStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        _MenuItem(
+                          label: 'ANALYZER',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AnalyzerScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        _MenuItem(
+                          label: 'VALVE',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ValveStatusScreen(),
+                              ),
+                            );
+                          },
+                        ),
+
+                      ],
+                    ),
+
+                     const SizedBox(height: 32),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: ElevatedButton(
@@ -104,13 +189,13 @@ class RWPScreen extends StatelessWidget {
                           elevation: 0,
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => RWPSDetailsScreen()),
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (_) => HomeScreen()),
+                            (route) => false,
                           );
                         },
                         child: Text(
-                          'NEXT',
+                          'HOME',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -119,6 +204,7 @@ class RWPScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    
                   ],
                 ),
               ],
@@ -132,19 +218,25 @@ class RWPScreen extends StatelessWidget {
 
 class _MenuItem extends StatelessWidget {
   final String label;
-  const _MenuItem({required this.label});
+  final VoidCallback? onTap;
+
+  const _MenuItem({required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.w300,
-          letterSpacing: 1.1,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(6),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w300,
+            letterSpacing: 1.1,
+          ),
         ),
       ),
     );
