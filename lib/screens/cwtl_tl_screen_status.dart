@@ -11,7 +11,7 @@ class CwtlTlStatusScreen extends StatefulWidget {
 
 class _CwtlTlStatusScreenState extends State<CwtlTlStatusScreen> {
   // Same endpoint used before, per-tag: /api/transmission/A1 ... /A32
-  static const String baseUrl = 'http://192.168.123.154:5000/api/transmission';
+  static const String baseUrl = 'http://13.126.21.76:5000/api/transmission';
 
   // ---- CWTL subset: A7..A12 ----
   static const List<int> _tagIndexes = [7, 8, 9, 10, 11, 12];

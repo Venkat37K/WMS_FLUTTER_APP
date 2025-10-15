@@ -11,7 +11,7 @@ class FeederMain2TlStatusScreen extends StatefulWidget {
 
 class _FeederMain2TlStatusScreenState extends State<FeederMain2TlStatusScreen> {
   // Same endpoint as the other TL pages: /api/transmission/A{n}
-  static const String baseUrl = 'http://192.168.123.154:5000/api/transmission';
+  static const String baseUrl = 'http://13.126.21.76:5000/api/transmission';
 
   // ---- FEEDER MAIN 2 subset: A13..A20 ----
   static const List<int> _tagIndexes = [13, 14, 15, 16, 17, 18, 19, 20];

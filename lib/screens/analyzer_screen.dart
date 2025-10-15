@@ -10,7 +10,7 @@ class AnalyzerScreen extends StatefulWidget {
 }
 
 class _AnalyzerScreenState extends State<AnalyzerScreen> {
-  static const String apiUrl = 'http://192.168.123.154:5000/api/rwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/rwph/tabs';
 
   late Future<_AnalyzerFetchResult> _future;
 

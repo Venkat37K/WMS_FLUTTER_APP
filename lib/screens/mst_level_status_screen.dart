@@ -11,7 +11,7 @@ class MstLevelStatusScreen extends StatefulWidget {
 
 class _MstLevelStatusScreenState extends State<MstLevelStatusScreen> {
   // MST API (flat sensor names)
-  static const String apiUrl = 'http://192.168.123.154:5000/api/mst-analog/latest';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/mst-analog/latest';
 
   // Keys in the "sensors" object
   static const String kLT1 = 'Level Transmitter 1';

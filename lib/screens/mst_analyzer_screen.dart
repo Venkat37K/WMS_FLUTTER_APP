@@ -11,7 +11,7 @@ class MstAnalyzerScreen extends StatefulWidget {
 
 class _MstAnalyzerScreenState extends State<MstAnalyzerScreen> {
   // MST analog endpoint
-  static const String apiUrl = 'http://192.168.123.154:5000/api/mst-analog/latest';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/mst-analog/latest';
 
   // Show exactly these four, with labels matching the API (image) and units.
   static const List<_ParamDef> _params = [

@@ -10,7 +10,7 @@ class LevelStatusScreen extends StatefulWidget {
 }
 
 class _LevelStatusScreenState extends State<LevelStatusScreen> {
-  static const String apiUrl = 'http://192.168.123.154:5000/api/rwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/rwph/tabs';
 
   // >>> CHANGE: read from TAB2 now
   static const String tabName = 'TAB2';

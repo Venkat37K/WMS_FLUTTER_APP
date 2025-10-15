@@ -10,7 +10,7 @@ class PressureStatusScreen extends StatefulWidget {
 }
 
 class _PressureStatusScreenState extends State<PressureStatusScreen> {
-  static const String apiUrl = 'http://192.168.123.154:5000/api/rwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/rwph/tabs';
 
   // >>> YOUR MAPPING: TAB2.A3..A15 => PT-1..PT-13
   static const String tabName = 'TAB2';

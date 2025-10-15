@@ -11,7 +11,7 @@ class CwpsPressureStatusScreen extends StatefulWidget {
 
 class _CwpsPressureStatusScreenState extends State<CwpsPressureStatusScreen> {
   // Same CWPH API base you used earlier:
-  static const String apiUrl = 'http://192.168.123.154:5000/api/cwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/cwph/tabs';
 
   // Mapping: TAB2.A2..A8 => PT-1..PT-7
   static const String tabName = 'TAB2';

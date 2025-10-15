@@ -11,7 +11,7 @@ class CwpsFlowStatusScreen extends StatefulWidget {
 
 class _CwpsFlowStatusScreenState extends State<CwpsFlowStatusScreen> {
   // Same CWPH API base you used for other CWPS screens
-  static const String apiUrl = 'http://192.168.123.154:5000/api/cwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/cwph/tabs';
 
   // Source: TAB2 → A9 (FT-1), A10 (FTZ-1)
   static const String _tabName = 'TAB2';

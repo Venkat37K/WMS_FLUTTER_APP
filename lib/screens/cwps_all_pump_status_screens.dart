@@ -28,7 +28,7 @@ class CwphAllPumpStatusScreen extends StatefulWidget {
 
 class _CwphAllPumpStatusScreenState extends State<CwphAllPumpStatusScreen> {
   // TODO: replace with your CWPH endpoint
-  static const String apiUrl = 'http://192.168.123.154:5000/api/cwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/cwph/tabs';
 
   // We show exactly 6 pumps: A1..A6 → PUMP-01..PUMP-06
   static const int visiblePumpCount = 6;

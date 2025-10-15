@@ -11,7 +11,7 @@ class RwtlTlStatusScreen extends StatefulWidget {
 
 class _RwtlTlStatusScreenState extends State<RwtlTlStatusScreen> {
   // Same endpoint used before, per-tag: /api/transmission/A1 ... /A32
-  static const String baseUrl = 'http://192.168.123.154:5000/api/transmission';
+  static const String baseUrl = 'http://13.126.21.76:5000/api/transmission';
 
   // ---- RWTL subset: A1..A6 ----
   static const List<int> _tagIndexes = [1, 2, 3, 4, 5, 6];

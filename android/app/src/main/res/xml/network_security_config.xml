@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <!-- Only this host can use http -->
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="false">13.126.21.76</domain>
+  </domain-config>
+
+  <!-- Everything else must use https (default) -->
+</network-security-config>

@@ -12,7 +12,7 @@ class Mbr1StatusScreen extends StatefulWidget {
 
 class _Mbr1StatusScreenState extends State<Mbr1StatusScreen> {
   // MBR endpoint (only change vs MSR1)
-  static const String apiUrl = 'http://192.168.123.154:5000/api/mbr-analog/latest';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/mbr-analog/latest';
 
   // ---- SAME display settings as MSR1 ----
   static const double levelLow = 20.0; // %

@@ -11,7 +11,7 @@ class CwpsAnalyzerScreen extends StatefulWidget {
 
 class _CwpsAnalyzerScreenState extends State<CwpsAnalyzerScreen> {
   // Same CWPH API base you used for other CWPS screens
-  static const String apiUrl = 'http://192.168.123.154:5000/api/cwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/cwph/tabs';
 
   // TAB & key mapping for CWPS Analyzer (TAB2: A11..A15)
   static const String _tabName = 'TAB2';

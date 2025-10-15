@@ -27,7 +27,7 @@ class AllPumpStatusScreen extends StatefulWidget {
 }
 
 class _AllPumpStatusScreenState extends State<AllPumpStatusScreen> {
-  static const String apiUrl = 'http://192.168.123.154:5000/api/rwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/rwph/tabs';
 
   /// We now show A1–A6 as PUMP-01..06, then add Cooling pumps from A7 & A8.
   static const int visibleStandardPumpCount = 6;

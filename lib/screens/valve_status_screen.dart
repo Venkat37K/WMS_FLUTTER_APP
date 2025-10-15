@@ -11,7 +11,7 @@ class ValveStatusScreen extends StatefulWidget {
 
 class _ValveStatusScreenState extends State<ValveStatusScreen> {
   // RWPS base URL
-  static const String apiUrl = 'http://192.168.123.154:5000/api/rwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/rwph/tabs';
 
   // Mapping (RWPS)
   // TAB1: A9..A15 -> Valve 1..7 (OPEN/CLOSE)

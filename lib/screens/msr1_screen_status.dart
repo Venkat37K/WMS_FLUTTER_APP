@@ -10,7 +10,7 @@ class Msr1StatusScreen extends StatefulWidget {
 }
 
 class _Msr1StatusScreenState extends State<Msr1StatusScreen> {
-  static const String apiUrl = 'http://192.168.123.154:5000/api/msr-analog/latest';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/msr-analog/latest';
 
   // Display settings (match your other screens)
   static const double levelLow = 20.0;     // %

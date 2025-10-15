@@ -11,7 +11,7 @@ class MstFlowStatusScreen extends StatefulWidget {
 }
 
 class _MstFlowStatusScreenState extends State<MstFlowStatusScreen> {
-  static const String apiUrl = 'http://192.168.123.154:5000/api/mst-analog/latest';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/mst-analog/latest';
 
   static const String flowUnit = 'm³/h';
   static const String totalUnit = 'm³';

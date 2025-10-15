@@ -12,7 +12,7 @@ class CwpsValveStatusScreen extends StatefulWidget {
 
 class _CwpsValveStatusScreenState extends State<CwpsValveStatusScreen> {
   // CWPS base URL (same you used elsewhere for CWPS)
-  static const String apiUrl = 'http://192.168.123.154:5000/api/cwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/cwph/tabs';
 
   // Mapping
   // TAB1: A7..A13 -> Valve 1..7 (OPEN/CLOSE)

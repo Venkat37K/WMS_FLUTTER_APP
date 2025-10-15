@@ -12,7 +12,7 @@ class MstPressureStatusScreen extends StatefulWidget {
 
 class _MstPressureStatusScreenState extends State<MstPressureStatusScreen> {
   // MST analog endpoint (same as your level screen)
-  static const String apiUrl = 'http://192.168.123.154:5000/api/mst-analog/latest';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/mst-analog/latest';
 
   // Display settings (kept same look/feel as CWPS)
   static const String unit = 'mH20';

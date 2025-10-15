@@ -11,7 +11,7 @@ class CwpsLevelStatusScreen extends StatefulWidget {
 
 class _CwpsLevelStatusScreenState extends State<CwpsLevelStatusScreen> {
   // Same CWPS API base you used for pumps:
-  static const String apiUrl = 'http://192.168.123.154:5000/api/cwph/tabs';
+  static const String apiUrl = 'http://13.126.21.76:5000/api/cwph/tabs';
 
   // Read from TAB2 → A1
   static const String _tabName = 'TAB2';
